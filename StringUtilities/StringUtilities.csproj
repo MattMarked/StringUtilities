@@ -7,6 +7,14 @@
     <Authors>Mattia Marchiani</Authors>
     <Company>Pomiager srl</Company>
     <Description>Extention to String class that makes it easier to do some commons jobs as check if string contains at least one value from an array, check if ends with at least one value from an array, get the file extension of a file name, compute the hash of a string, encrypt and decrypt the string with RSA and more.</Description>
+    <PackageProjectUrl>https://github.com/MattMarked/StringUtilities/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MattMarked/StringUtilities/</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <PackageTags>string util utilities utility decrypt encrypt hash left right startswith trim extension extensions</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/MattMarked/StringUtilities/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
 </Project>
