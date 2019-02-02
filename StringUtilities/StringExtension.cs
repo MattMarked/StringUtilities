@@ -10,15 +10,7 @@ namespace StringUtilities
     
     public static class StringExtension 
     {
-        /// <summary>
-        /// Remove all leading and trailing white spaces and convert multiple white spaces to one single white space inside this string instance.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static string TrimAndReduce(this string value)
-        {
-            return ConvertWhiteSpacesToSingleSpace(value).Trim();
-        }
+       
 
         /// <summary>
         /// Convert multiple white spaces to one single white space inside this string instance.
@@ -119,13 +111,29 @@ namespace StringUtilities
             return false;
         }
 
-        /// <summary>
-        /// Determines whether the beginning of this string instance matches at least one string in the specified string array.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="values">The string array to compare to the substring at the beginning of this instance.</param>
-        /// <returns>True if at least one value matches the beginning of this instance; otherwise, false.</returns>
-        public static bool StartsWith(this string value, string[] values)
+		/// <summary>
+		/// Determines whether the last char of this string instance matches at least one char in the specified char array.
+		/// </summary>
+		/// <param name="value"></param>
+		/// <param name="values">The char array to compare to the char at the end of this instance.</param>
+		/// <returns>True if at least one value matches the end of this instance; otherwise, false.</returns>
+		public static bool EndsWith(this string value, char[] values)
+		{
+			for (int i = 0; i < values.Length; i++)
+			{
+				if (value.EndsWith(values[i]))
+					return true;
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// Determines whether the beginning of this string instance matches at least one string in the specified string array.
+		/// </summary>
+		/// <param name="value"></param>
+		/// <param name="values">The string array to compare to the substring at the beginning of this instance.</param>
+		/// <returns>True if at least one value matches the beginning of this instance; otherwise, false.</returns>
+		public static bool StartsWith(this string value, string[] values)
         {
             for (int i = 0; i < values.Length; i++)
             {
@@ -133,9 +141,7 @@ namespace StringUtilities
                     return true;
             }
             return false;
-        }
-
-        
+        }			 		           
 
         /// <summary>
         /// Returns characters from right of specified length
@@ -279,8 +285,7 @@ namespace StringUtilities
         {
             HMAC, HMACMD5, HMACSHA1, HMACSHA256, HMACSHA384, HMACSHA512,
              MD5,  SHA1, SHA256, SHA384, SHA512
-        }
-
+        }		  
         private static byte[] GetHash(string input, eHashType hash)
         {
             byte[] inputBytes = Encoding.ASCII.GetBytes(input);
@@ -362,8 +367,7 @@ namespace StringUtilities
             }
             var splitted = value.Split('.');
             return splitted.Last();
-        }
-
+        }	  
         /// <summary>
         /// Get the current file extension of this string, if any. Otherwise return empty string.
         /// </summary>
@@ -377,7 +381,22 @@ namespace StringUtilities
             }
             var splitted = value.Split('.');
             return splitted.Last();
-        }
+        }	 
+	
+
+		/// <summary>
+		/// Try to parse a string to Int32. If it's not possible throw exception
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
+		public static int ToInt(this string value)
+		{
+			if (!int.TryParse(value, out int result))
+			{
+				throw new Exception("Can't parse this string ot int.");
+			}
+			return result;
+		}
 
 		/// <summary>
 		/// Try to parse a string to Nullable<int>. If it's not possible return null
@@ -394,17 +413,13 @@ namespace StringUtilities
 		}
 
 		/// <summary>
-		/// Try to parse a string to Int32. If it's not possible throw exception
+		/// Remove all leading and trailing white spaces and convert multiple white spaces to one single white space inside this string instance.
 		/// </summary>
-		/// <param name="input"></param>
+		/// <param name="value"></param>
 		/// <returns></returns>
-		public static int ToInt(this string value)
+		public static string TrimAndReduce(this string value)
 		{
-			if (!int.TryParse(value, out int result))
-			{
-				throw new Exception("Can't parse this string ot int.");
-			}
-			return result;
+			return ConvertWhiteSpacesToSingleSpace(value).Trim();
 		}
 	}
 }
