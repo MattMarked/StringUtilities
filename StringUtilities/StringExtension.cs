@@ -30,13 +30,86 @@ namespace StringUtilities
             return Regex.Replace(value, @"\s+", " ");
         }
 
-        /// <summary>
-        /// Determines whether the end of this string instance matches at least one string in the specified string array.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="values">The string array to compare to the substring at the end of this instance.</param>
-        /// <returns>True if at least one value matches the end of this instance; otherwise, false.</returns>
-        public static bool EndsWith(this string value, string[] values)
+		#region Contains
+
+		/// <summary>
+		/// Determines if at least one value from the specified string array occurs as a substring within this string.
+		/// </summary>
+		/// <param name="value"></param>
+		/// <param name="values">The string array to seek.</param>
+		/// <returns>True if at least one value occurs within this string; otherwise, false.</returns>
+		public static bool Contains(this string value, string[] values)
+		{
+			for (int i = 0; i < values.Length; i++)
+			{
+				if (value.Contains(values[i]))
+					return true;
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// Determines if at least one value from the specified char array occurs as a substring within this string.
+		/// </summary>
+		/// <param name="value"></param>
+		/// <param name="values">The char array to seek.</param>
+		/// <returns>True if at least one value occurs within this string; otherwise, false.</returns>
+		public static bool Contains(this string value, char[] values)
+		{
+
+			for (int i = 0; i < values.Length; i++)
+			{
+				if (value.Contains(values[i]))
+					return true;
+			}
+			return false;
+		}
+
+		public static bool Contains(this string value, char[] values, StringComparison comparisonType)
+		{
+			for (int i = 0; i < values.Length; i++)
+			{
+				if (value.Contains(values[i], comparisonType))
+					return true;
+			}
+			return false;
+		}
+
+		public static bool Contains(this string value, string[] values, StringComparison comparisonType)
+		{
+			for (int i = 0; i < values.Length; i++)
+			{
+				if (value.Contains(values[i], comparisonType))
+					return true;
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// Determines whether a string contains at least one char from an array by using a specified IEqualityComparer<in T></in>
+		/// </summary>
+		/// <param name="value"></param>
+		/// <param name="values"></param>
+		/// <param name="comparer"></param>
+		/// <returns></returns>
+		public static bool Contains(this string value, char[] values, IEqualityComparer<char> comparer)
+		{
+			for (int i = 0; i < values.Length; i++)
+			{
+				if (value.Contains(values[i], comparer))
+					return true;
+			}
+			return false;
+		} 
+		#endregion
+
+		/// <summary>
+		/// Determines whether the end of this string instance matches at least one string in the specified string array.
+		/// </summary>
+		/// <param name="value"></param>
+		/// <param name="values">The string array to compare to the substring at the end of this instance.</param>
+		/// <returns>True if at least one value matches the end of this instance; otherwise, false.</returns>
+		public static bool EndsWith(this string value, string[] values)
         {
             for(int i = 0; i < values.Length; i++)
             {
@@ -62,21 +135,7 @@ namespace StringUtilities
             return false;
         }
 
-        /// <summary>
-        /// Determines if at least one value from the specified string array occurs as a substring within this string.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="values">The string array to seek.</param>
-        /// <returns>True if at least one value occurs within this string; otherwise, false.</returns>
-        public static bool Contains(this string value, string[] values)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (value.Contains(values[i]))
-                    return true;
-            }
-            return false;
-        }
+        
 
         /// <summary>
         /// Returns characters from right of specified length
@@ -100,7 +159,7 @@ namespace StringUtilities
             return value != null && value.Length > length ? value.Substring(0, length) : value;
         }
 
-        /// <summary>
+        /// <summary>				  
         /// Formats the string according to the specified mask
         /// </summary>
         /// <param name="value"></param>
