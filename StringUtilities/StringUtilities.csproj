@@ -16,7 +16,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://github.com/MattMarked/StringUtilities/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Mattia Marchiani</Copyright>
-    <PackageReleaseNotes>First Version</PackageReleaseNotes>
+    <PackageReleaseNotes>Added ToInt(), ToParseInt(), and extended all Contains's signatures.</PackageReleaseNotes>
     <Version>1.0.1</Version>
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
   </PropertyGroup>
