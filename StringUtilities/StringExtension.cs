@@ -378,5 +378,33 @@ namespace StringUtilities
             var splitted = value.Split('.');
             return splitted.Last();
         }
-    }
+
+		/// <summary>
+		/// Try to parse a string to Nullable<int>. If it's not possible return null
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
+		public static int? ToSafeInt(this string value)
+		{
+			if (!int.TryParse(value, out int result))
+			{
+				return null;
+			}
+			return result;
+		}
+
+		/// <summary>
+		/// Try to parse a string to Int32. If it's not possible throw exception
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
+		public static int ToInt(this string value)
+		{
+			if (!int.TryParse(value, out int result))
+			{
+				throw new Exception("Can't parse this string ot int.");
+			}
+			return result;
+		}
+	}
 }
