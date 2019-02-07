@@ -16,7 +16,7 @@ namespace StringUtilities
 		/// <param name="value"></param>
 		/// <param name="target">The string to compare with the current instace</param>
 		/// <returns></returns>
-		private static int CalculateLevenshteinDistance(this string value, string target)
+		public static int CalculateLevenshteinDistance(this string value, string target)
 		{
 			if (String.IsNullOrEmpty(value) && String.IsNullOrEmpty(target))
 			{

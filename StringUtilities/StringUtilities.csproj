@@ -17,9 +17,9 @@
     <PackageLicenseUrl>https://github.com/MattMarked/StringUtilities/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Mattia Marchiani</Copyright>
     <PackageReleaseNotes>Added CalculateLevenshteinDistance(string target)</PackageReleaseNotes>
-    <Version>1.0.2</Version>
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
-    <FileVersion>1.0.2.0</FileVersion>
+    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
   </PropertyGroup>
 
 </Project>
