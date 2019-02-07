@@ -10,14 +10,51 @@ namespace StringUtilities
     
     public static class StringExtension 
     {
-       
+		/// <summary>
+		/// Calculate the Levenshtein distance between the current string and a target string
+		/// </summary>
+		/// <param name="value"></param>
+		/// <param name="target">The string to compare with the current instace</param>
+		/// <returns></returns>
+		private static int CalculateLevenshteinDistance(this string value, string target)
+		{
+			if (String.IsNullOrEmpty(value) && String.IsNullOrEmpty(target))
+			{
+				return 0;
+			}
+			if (String.IsNullOrEmpty(value))
+			{
+				return target.Length;
+			}
+			if (String.IsNullOrEmpty(target))
+			{
+				return value.Length;
+			}
+			int lengthA = value.Length;
+			int lengthB = target.Length;
+			var distances = new int[lengthA + 1, lengthB + 1];
+			for (int i = 0; i <= lengthA; distances[i, 0] = i++) ;
+			for (int j = 0; j <= lengthB; distances[0, j] = j++) ;
 
-        /// <summary>
-        /// Convert multiple white spaces to one single white space inside this string instance.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static string ConvertWhiteSpacesToSingleSpace(this string value)
+			for (int i = 1; i <= lengthA; i++)
+				for (int j = 1; j <= lengthB; j++)
+				{
+					int cost = target[j - 1] == value[i - 1] ? 0 : 1;
+					distances[i, j] = Math.Min
+						(
+						Math.Min(distances[i - 1, j] + 1, distances[i, j - 1] + 1),
+						distances[i - 1, j - 1] + cost
+						);
+				}
+			return distances[lengthA, lengthB];
+		}
+
+		/// <summary>
+		/// Convert multiple white spaces to one single white space inside this string instance.
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		public static string ConvertWhiteSpacesToSingleSpace(this string value)
         {
             return Regex.Replace(value, @"\s+", " ");
         }

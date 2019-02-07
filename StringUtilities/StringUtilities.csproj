@@ -6,7 +6,7 @@
     <RootNamespace>StringUtilities</RootNamespace>
     <Authors>Mattia Marchiani</Authors>
     <Company>Pomiager srl</Company>
-    <Description>Extension to String class that makes it easier to do some common jobs as check if string contains at least one value from an array, check if ends with at least one value from an array, get the file extension of a filename, compute the hash of a string, encrypt and decrypt the string with RSA and more.</Description>
+    <Description>Extension to String class that makes it easier to do some common jobs as calculate Levenshtein distance between with another string, check if string contains at least one value from an array, check if ends with at least one value from an array, get the file extension of a filename, compute the hash of a string, encrypt and decrypt the string with RSA and more.</Description>
     <PackageProjectUrl>https://github.com/MattMarked/StringUtilities/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MattMarked/StringUtilities/</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
@@ -16,9 +16,10 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://github.com/MattMarked/StringUtilities/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Mattia Marchiani</Copyright>
-    <PackageReleaseNotes>Added ToInt(), ToParseInt(), and extended all Contains's signatures.</PackageReleaseNotes>
-    <Version>1.0.1</Version>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <PackageReleaseNotes>Added CalculateLevenshteinDistance(string target)</PackageReleaseNotes>
+    <Version>1.0.2</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
   </PropertyGroup>
 
 </Project>
